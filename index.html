@@ -13,10 +13,34 @@
     <title>Bate Papo UOL</title>
 </head>
 <body>
+    <div class="block hidden" >
+        <div class="left_side" onclick="sideBarOFF()"></div>
+        <div class="side_bar">
+            <div>
+                <p>Escolha um contato para enviar mensagem:</p>
+            </div>
+            <div class="participants">
+            </div>
+            <div>
+                <p>Escolha a visibilidade:</p>
+            </div>
+            <div class="type">
+                <p>
+                    <ion-icon class="icon" name="lock-open"></ion-icon>
+                    Público
+                </p>
+                <p>
+                    <ion-icon class="icon" name="lock-closed"></ion-icon>
+                    Reservadamente
+                </p>
+
+            </div>
+        </div>
+    </div>
     <div class="top">
         <div>
             <img src="img/logo.png" alt="logo_uol">
-            <ion-icon class="icon" name="people"></ion-icon>
+            <ion-icon class="icon" name="people" onclick="sideBarON()"></ion-icon>
         </div>
     </div>
     <div class="container">
@@ -37,13 +61,14 @@
     </div>
     <div class="bottom">
         <div>
-            <input type="text" placeholder="Escreva aqui ...">
-            <ion-icon class="icon" name="paper-plane-outline"></ion-icon>
+            <input class="input_text" type="text" placeholder="Escreva aqui ...">
+            <ion-icon class="icon" onclick="sendMessage()" name="paper-plane-outline"></ion-icon>
         </div>
 
     </div>
 
     <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

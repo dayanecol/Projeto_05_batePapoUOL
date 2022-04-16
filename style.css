@@ -59,8 +59,12 @@ p{
 
 .bottom .icon{
     font-size: 26px;
+    cursor: pointer;
 }
 
+.bottom .icon:active{
+    transform: translate(1px,1px);
+}
 .container{
     margin: 102px 0;
 }
@@ -82,4 +86,67 @@ p{
     height: fit-content;
     padding: 20px 10px;
     margin: 4px 0;
+}
+
+.hidden{
+    display: none;
+
+}
+
+.block{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left:0;
+    z-index: 1;
+}
+
+.left_side{
+    background-color: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left:0;
+}
+
+.side_bar{
+    background-color: #FFF;
+    width: 259px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    right: 0;
+}
+
+.side_bar p{
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 18.75px;
+    text-align: center;
+    color: #000;
+    padding: 25px;
+}
+
+.side_bar div{
+    width: 100%;
+    height: fit-content;
+}
+
+.side_bar .icon{
+    font-size: 25px;
+    margin: 8px;
+}
+
+.participants p, .type p{
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    padding: 0 0 0 15px;
+}
+
+.participants div{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
 }
