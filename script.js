@@ -1,6 +1,8 @@
 loadMessages();
 loadParticipants();
 getIn();
+
+
 let object_message = {
     from: "",
     to:"Todos",//Default
@@ -8,15 +10,23 @@ let object_message = {
     type: "message"//Default
 }
 
+let input = document.querySelector(".input_text");
+input.addEventListener("keydown", function(event){
+    if (event.keyCode === 13){
+        sendMessage();
+    }
+}); 
+
 function sendMessage(){
     const input_text = document.querySelector(".input_text").value;
+    document.querySelector(".input_text").value="";
     object_message.text = input_text;
     
 
     const promise = axios.post("https://mock-api.driven.com.br/api/v6/uol/messages",object_message);
     promise.then(loadMessages);
     promise.catch(reLoad);
-    document.querySelector(".input_text").value="";
+    
 }
 
 
@@ -191,8 +201,3 @@ function selectedType(element){
 
 }
 
-
-function keydown(){
-    let input = document.querySelector(".input_text");
-   
-}
