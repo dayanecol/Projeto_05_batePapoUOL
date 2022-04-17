@@ -150,3 +150,24 @@ p{
     justify-content: flex-start;
     align-items: center;
 }
+
+.user_name, .status{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.user_name .icon, .status .icon{
+    padding: 0 10px;
+    font-size: 20px;
+    color:#28BB25;
+}
+
+.user_item:active{
+    transform: translate(1px,1px); 
+}
+
+.selected{
+    color:#28BB25;
+}

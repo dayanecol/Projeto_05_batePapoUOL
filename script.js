@@ -65,19 +65,26 @@ function renderParticipants(response){
     const containerParticipants = document.querySelector(".side_bar .participants");
     console.log(response.data.length);
     containerParticipants.innerHTML=`
-                <p>
+                <p "user_item" onclick="selectedUser(this)">
                     <ion-icon class="icon" name="people"></ion-icon>
-                    Todos
+                    <span class="user_name">
+                        <span class="name">Todos</span>
+                        <span><ion-icon class="icon hidden" name="checkmark-sharp"></ion-icon></span>
+                    </span> 
                 </p>
     `;
 
     for (let i=0; i<response.data.length; i++){
         const participants_name= response.data[i].name;
         containerParticipants.innerHTML += `
-        <p>
-            <ion-icon class="icon" name="person-circle"></ion-icon>
-            <span class="name">${participants_name}</span> 
-        </p>`
+                <p class="user_item" onclick="selectedUser(this)">
+                    <ion-icon class="icon" name="person-circle"></ion-icon>
+                    <span class="user_name">
+                        <span class="name">${participants_name}</span>
+                        <span><ion-icon class="icon hidden" name="checkmark-sharp"></ion-icon></span>
+                    </span> 
+                </p>
+                `;
     }
     setTimeout(loadParticipants,10000);
 }
@@ -142,4 +149,22 @@ function sideBarOFF(){
     const displayBlock = document.querySelector(".block").classList.add("hidden");
 }
 
+function selectedUser(element){
+    let selected= document.querySelector(".selected");
+    if (selected !== null){
+        selected.classList.remove("selected");
+        selected.classList.add("hidden");
+    }
+    element.querySelector(".user_name").querySelector(".icon.hidden").classList.remove("hidden");
+    element.querySelector(".user_name").querySelector(".icon").classList.add("selected");
+}
 
+function selectedStatus(element){
+    let selected= document.querySelector(".selected");
+    if (selected !== null){
+        selected.classList.remove("selected");
+        selected.classList.add("hidden");
+    }
+    element.querySelector(".status").querySelector(".icon.hidden").classList.remove("hidden");
+    element.querySelector(".status").querySelector(".icon").classList.add("selected");
+}
