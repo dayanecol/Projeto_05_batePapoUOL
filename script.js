@@ -3,18 +3,20 @@ loadParticipants();
 getIn();
 let object_message = {
     from: "",
-    to:"Todos",
+    to:"Todos",//Default
     text: "",
-    type: "message"// ou "private_message" para o bônus
+    type: "message"//Default
 }
 
 function sendMessage(){
     const input_text = document.querySelector(".input_text").value;
     object_message.text = input_text;
+    
 
     const promise = axios.post("https://mock-api.driven.com.br/api/v6/uol/messages",object_message);
     promise.then(loadMessages);
     promise.catch(reLoad);
+    document.querySelector(".input_text").value="";
 }
 
 
@@ -69,7 +71,7 @@ function renderParticipants(response){
                     <ion-icon class="icon" name="people"></ion-icon>
                     <span class="user_name">
                         <span class="name">Todos</span>
-                        <span><ion-icon class="icon hidden" name="checkmark-sharp"></ion-icon></span>
+                        <span><ion-icon class="icon hidden_user_check" name="checkmark-sharp">Todos</ion-icon></span>
                     </span> 
                 </p>
     `;
@@ -81,7 +83,7 @@ function renderParticipants(response){
                     <ion-icon class="icon" name="person-circle"></ion-icon>
                     <span class="user_name">
                         <span class="name">${participants_name}</span>
-                        <span><ion-icon class="icon hidden" name="checkmark-sharp"></ion-icon></span>
+                        <span><ion-icon class="icon hidden_user_check" name="checkmark-sharp"></ion-icon></span>
                     </span> 
                 </p>
                 `;
@@ -117,7 +119,7 @@ function renderMessages(response){
             case "message":
                 containerMessages.innerHTML += `
                     <div class="normal_message">
-                        <p>(${message.time})&nbsp${message.from}&nbsp${message.to}:&nbsp${message.text}</p>
+                        <p>(${message.time})&nbsp${message.from} para ${message.to}:&nbsp${message.text}</p>
                     </div>
                     `;
                 containerMessages.scrollIntoView({block: "end"});
@@ -128,7 +130,7 @@ function renderMessages(response){
 
                     containerMessages.innerHTML += `
                     <div class="private_message">
-                        <p>(${message.time})&nbsp${message.from}&nbsp${message.to}:&nbsp${message.text}</p>
+                        <p>(${message.time}) ${message.from} reservadamente para ${message.to}:&nbsp${message.text}</p>
                     </div>
                     `;
                     containerMessages.scrollIntoView({block: "end"});
@@ -150,21 +152,47 @@ function sideBarOFF(){
 }
 
 function selectedUser(element){
-    let selected= document.querySelector(".selected");
+    let selected= document.querySelector(".selected_user_check");
+    let selected_user=document.querySelector(".selected_user");
     if (selected !== null){
-        selected.classList.remove("selected");
-        selected.classList.add("hidden");
+        selected.classList.remove("selected_user_check");
+        selected_user.classList.remove("selected_user");
+        selected.classList.add("hidden_user_check");
     }
-    element.querySelector(".user_name").querySelector(".icon.hidden").classList.remove("hidden");
-    element.querySelector(".user_name").querySelector(".icon").classList.add("selected");
+    element.querySelector(".user_name").querySelector(".icon.hidden_user_check").classList.remove("hidden_user_check");
+    element.querySelector(".user_name").querySelector(".icon").classList.add("selected_user_check");
+    element.querySelector(".user_name").querySelector(".name").classList.add("selected_user");
+
+    object_message.to = document.querySelector(".selected_user").innerHTML;
+    document.querySelector(".send_to_type").innerHTML=`Enviando para ${object_message.to} (${document.querySelector(".selected_type").innerHTML})`;
 }
 
-function selectedStatus(element){
-    let selected= document.querySelector(".selected");
+function selectedType(element){
+    let selected= document.querySelector(".selected_type_check");
+    let selected_type=document.querySelector(".selected_type");
     if (selected !== null){
-        selected.classList.remove("selected");
-        selected.classList.add("hidden");
+        selected.classList.remove("selected_type_check");
+        selected_type.classList.remove("selected_type");
+        selected.classList.add("hidden_type_check"); 
     }
-    element.querySelector(".status").querySelector(".icon.hidden").classList.remove("hidden");
-    element.querySelector(".status").querySelector(".icon").classList.add("selected");
+    element.querySelector(".type_msg").querySelector(".icon.hidden_type_check").classList.remove("hidden_type_check");
+    element.querySelector(".type_msg").querySelector(".icon").classList.add("selected_type_check");
+    element.querySelector(".type_msg").querySelector(".type_message").classList.add("selected_type");
+    
+    
+    if (document.querySelector(".selected_type").innerHTML == "Reservadamente"){
+        object_message.type= "private_message";
+    }
+    if (document.querySelector(".selected_type").innerHTML == "Público"){
+        object_message.type= "message";
+    }
+
+    document.querySelector(".send_to_type").innerHTML=`Enviando para ${object_message.to} (${document.querySelector(".selected_type").innerHTML})`;
+
+}
+
+
+function keydown(){
+    let input = document.querySelector(".input_text");
+   
 }

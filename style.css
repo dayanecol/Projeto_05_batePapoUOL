@@ -28,8 +28,26 @@ p{
     left: 0;
 }
 
+.bottom span:nth-child(2){
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 25px; 
+    color: #000;
+    margin: 0 0 10px 5px;
+}
+
+.bottom span:first-child{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 30px 10px 5px;
+}
+
 
 .bottom div{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.05);
     left: 0;
     bottom: 0;
@@ -46,7 +64,7 @@ p{
 
 .bottom input{
     width: 145px;
-    height: 30px;
+    height: fit-content;
     font-style: italic;
     font-weight: 400;
     font-size: 18px;
@@ -88,7 +106,7 @@ p{
     margin: 4px 0;
 }
 
-.hidden{
+.hidden, .hidden_user_check, .hidden_type_check{
     display: none;
 
 }
@@ -151,14 +169,14 @@ p{
     align-items: center;
 }
 
-.user_name, .status{
+.user_name, .type_msg{
     display: flex;
     align-items: center;
     width: 100%;
     justify-content: space-between;
 }
 
-.user_name .icon, .status .icon{
+.user_name .icon, .type_msg .icon{
     padding: 0 10px;
     font-size: 20px;
     color:#28BB25;
@@ -168,6 +186,6 @@ p{
     transform: translate(1px,1px); 
 }
 
-.selected{
+.selected_user_check, .selected_user, .selected_type_check, .selected_type{
     color:#28BB25;
 }

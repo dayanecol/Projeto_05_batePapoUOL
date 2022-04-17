@@ -26,18 +26,18 @@
                 <p>Escolha a visibilidade:</p>
             </div>
             <div class="type">
-                <p onclick="selectedStatus(this)">
+                <p onclick="selectedType(this)">
                     <ion-icon class="icon" name="lock-open"></ion-icon>
-                    <span class="status">
-                        <span>Público</span>
-                        <span ><ion-icon class="icon hidden" name="checkmark-sharp"></ion-icon></span>
+                    <span class="type_msg">
+                        <span class="type_message">Público</span>
+                        <span ><ion-icon class="icon hidden_type_check" name="checkmark-sharp"></ion-icon></span>
                     </span> 
                 </p>
-                <p onclick="selectedStatus(this)">
+                <p onclick="selectedType(this)">
                     <ion-icon class="icon " name="lock-closed"></ion-icon>
-                    <span class="status">
-                        <span>Reservadamente</span>
-                        <span><ion-icon class="icon hidden" name="checkmark-sharp"></ion-icon></span>
+                    <span class="type_msg">
+                        <span class="type_message">Reservadamente</span>
+                        <span><ion-icon class="icon hidden_type_check" name="checkmark-sharp"></ion-icon></span>
                     </span> 
                 </p>
             </div>
@@ -66,9 +66,13 @@
     </div>
     <div class="bottom">
         <div>
-            <input class="input_text" type="text" placeholder="Escreva aqui ...">
-            <ion-icon class="icon" onclick="sendMessage()" name="paper-plane-outline"></ion-icon>
+            <span>
+                <input class="input_text" type="text" onkeydown="keydown()" placeholder="Escreva aqui ...">
+                <ion-icon class="icon" onclick="sendMessage()" name="paper-plane-outline"></ion-icon>
+            </span>
+            <span class="send_to_type"></span>
         </div>
+        
 
     </div>
 
