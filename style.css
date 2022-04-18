@@ -135,6 +135,8 @@ p{
     position: fixed;
     top: 0;
     right: 0;
+    z-index: 2;
+    overflow-y: scroll;
 }
 
 .side_bar p{
@@ -155,6 +157,7 @@ p{
     font-size: 25px;
     margin: 8px;
 }
+
 
 .participants p, .type p{
     font-weight: 400;
@@ -187,5 +190,5 @@ p{
 }
 
 .selected_user_check, .selected_user, .selected_type_check, .selected_type{
-    color:#28BB25;
+    color:#000;
 }
